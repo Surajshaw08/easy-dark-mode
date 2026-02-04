@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/Surajshaw08/easy-dark-mode.git"
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "author": "devsuraj08",
   "type": "module",
   "main": "src/index.js",
