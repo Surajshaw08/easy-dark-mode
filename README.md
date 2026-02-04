@@ -1,40 +1,51 @@
-# 🌙 Easy Dark Mode (React & Next.js)
+🌙 Easy Dark Mode (React & Next.js)
 
-Easy Dark Mode ek **plug-and-play dark mode solution** hai jo bina manually CSS likhe, aapki poori website ko **smartly dark mode** me convert kar deta hai. Ye existing colors ko detect karta hai aur unhe intelligently dark mode ke liye adjust karta hai.
+Easy Dark Mode is a plug-and-play dark mode solution for React and Next.js that automatically converts your entire website to dark mode without writing manual CSS.
 
----
+It intelligently detects existing colors and transforms them into an optimized dark theme while preserving usability, contrast, and accessibility.
 
-## ✨ Features
+✨ Features
 
-- ⚡ **One-click Dark Mode Toggle**: Smooth transition ke saath.
-- 🎨 **Smart Color Conversion**: Background, text, aur borders ko automatic handle karta hai.
-- 🔄 **Dynamic DOM Support**: MutationObserver ki madad se dynamically added elements pe bhi apply hota hai.
-- 💾 **Persistence**: User preference default `localStorage` me save hoti hai.
-- 🖼️ **Media Adjustment**: Images aur videos ki brightness/contrast auto-adjust hoti hai.
-- 🛠️ **Fully Customizable**: CSS variables ke through colors override kar sakte hain.
-- 🚀 **Framework Ready**: React aur Next.js (App Router) dono ke liye optimized.
+⚡ One-Click Dark Mode Toggle
+Smooth and instant theme switching.
 
----
+🎨 Smart Color Conversion
+Automatically adjusts backgrounds, text, borders, inputs, and UI elements.
 
-## 📦 Installation
+🔄 Dynamic DOM Support
+Uses MutationObserver to handle dynamically added elements.
 
-```bash
-npm i easy-dark-mode
-```
+💾 Persistent User Preference
+Stores theme preference in localStorage.
 
----
+🖼️ Media Adjustment
+Automatically optimizes brightness and contrast for images and videos.
 
-## 🚀 Usage
+🛠️ Fully Customizable
+Override default dark colors using CSS variables.
 
-### 1️⃣ Global Wrapper (React/Next.js)
+🚀 Framework Ready
+Optimized for React and Next.js (App Router).
 
-Sabse pehle apne App component ko `DarkModeProvider` se wrap karein.
+📦 Installation
+npm install easy-dark-mode
 
-#### For Next.js (App Router):
-Create a `providers.js` or directly wrap in `layout.js` (Ensure it's a Client Component).
 
-```jsx
-// app/layout.js
+or
+
+yarn add easy-dark-mode
+
+🚀 Quick Start
+1️⃣ Wrap Your App with DarkModeProvider
+
+This enables dark mode globally.
+
+✅ Next.js (App Router)
+
+Important: layout.js must be a Client Component
+
+"use client";
+
 import { DarkModeProvider } from "easy-dark-mode";
 
 export default function RootLayout({ children }) {
@@ -48,67 +59,59 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-```
 
-#### For React:
-```jsx
-// src/main.jsx or App.jsx
+✅ React (Vite / CRA)
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
 import { DarkModeProvider } from "easy-dark-mode";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <DarkModeProvider>
     <App />
   </DarkModeProvider>
-)
-```
+);
 
-### 2️⃣ Adding Toggle Button
+🌗 Adding a Dark Mode Toggle
 
-Aap `DarkModeToggle` component ko jha chahe wha use kar sakte hain.
+You can place the toggle button anywhere in your app.
 
-```jsx
 import { DarkModeToggle } from "easy-dark-mode";
 
 function Navbar() {
   return (
     <nav>
       <h1>My App</h1>
-      {/* Defaults to fixed bottom-right */}
-      <DarkModeToggle /> 
-      
-      {/* Inline position */}
+
+      {/* Fixed bottom-right (default) */}
+      <DarkModeToggle />
+
+      {/* Inline placement */}
       <DarkModeToggle fixed={false} />
     </nav>
   );
 }
-```
 
----
+export default Navbar;
 
-## 🎨 Customizing Colors (CSS Variables)
+🎨 Customizing Dark Colors (CSS Variables)
 
-Agar aapko default dark colors pasand nahi, toh aap apni **global CSS** me variables override kar sakte hain:
+You can override the default dark theme colors globally.
 
-```css
 :root {
-  /* Default Values override examples */
-  --edm-bg: #121212;             /* Main background */
-  --edm-text: #e0e0e0;           /* Main text color */
-  --edm-input-bg: #1e1e1e;       /* Input background */
-  --edm-input-border: #333;      /* Input border color */
-  --edm-input-text: #ffffff;     /* Input text color */
-  --edm-input-focus: #4da3ff;    /* Input focus border */
+  --edm-bg: #121212;           /* Main background */
+  --edm-text: #e0e0e0;         /* Main text */
+  --edm-input-bg: #1e1e1e;     /* Input background */
+  --edm-input-border: #333333; /* Input border */
+  --edm-input-text: #ffffff;   /* Input text */
+  --edm-input-focus: #4da3ff;  /* Focus outline */
 }
-```
 
----
+🧠 Advanced Usage
+Custom Toggle Button (Using Hook)
 
-## 🧠 Advanced Usage
+If you want to build your own custom UI, use the useDarkMode hook.
 
-### Custom Toggle Button
-Agar aapko apna custom button banana hai, toh `useDarkMode` hook ka use karein:
-
-```jsx
 import { useDarkMode } from "easy-dark-mode";
 
 function CustomThemeButton() {
@@ -116,32 +119,43 @@ function CustomThemeButton() {
 
   return (
     <button onClick={() => setEnabled(!enabled)}>
-      {enabled ? "☀️ Light" : "🌙 Dark"}
+      {enabled ? "☀️ Light Mode" : "🌙 Dark Mode"}
     </button>
   );
 }
-```
 
----
+export default CustomThemeButton;
 
-## 🛠️ Props & API
+🛠️ API Reference
+DarkModeToggle Props
+Prop	Type	Default	Description
+fixed	boolean	true	Fixes toggle to bottom-right
+style	object	{}	Inline styles
+className	string	""	Custom CSS class
+useDarkMode Hook
+const { enabled, setEnabled } = useDarkMode();
 
-### `DarkModeToggle` Props
-| Prop | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `fixed` | `boolean` | `true` | Agar `true` hai toh button bottom-right corner me fix rahega. |
-| `style` | `object` | `{}` | Custom inline styles for the button. |
-| `className` | `string` | `""` | Additional CSS class. |
+Property	Type	Description
+enabled	boolean	Current theme state
+setEnabled	function	Toggle theme
+💾 State Persistence
 
-### `useDarkMode` Hook
-Returns `{ enabled, setEnabled }`.
+User preference is automatically saved in:
 
----
+localStorage key: easy-dark-mode-enabled
 
-## 💾 Saving State
-Package automatically `localStorage` me `easy-dark-mode-enabled` key use karta hai taaki user ka preference refresh hone par bhi barkrar rahe.
 
----
+The selected theme persists across page reloads and sessions.
 
-## 📄 License
-MIT 
+📄 License
+
+Apache License 2.0
+
+You are free to use, modify, and distribute this software in compliance with the Apache 2.0 License.
+
+See the full license here:
+👉 https://www.apache.org/licenses/LICENSE-2.0
+
+⭐ Support
+
+If you like this project, please ⭐ star the repository and share it with the community!
