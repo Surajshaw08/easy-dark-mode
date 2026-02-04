@@ -1,6 +1,6 @@
 {
   "name": "easy-dev-dark-mode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A plug-and-play dark mode solution for React and Next.js that automatically transforms your website colors.",
   "keywords": [
     "react",
