@@ -1,0 +1,47 @@
+{
+  "name": "easy-dark-mode",
+  "version": "1.0.0",
+  "description": "A plug-and-play dark mode solution for React and Next.js that automatically transforms your website colors.",
+  "keywords": [
+    "react",
+    "nextjs",
+    "dark-mode",
+    "automatic-dark-mode",
+    "css-variables",
+    "ui-library",
+    "accessibility"
+  ],
+  "homepage": "https://github.com/Surajshaw08/easy-dark-mode#readme",
+  "bugs": {
+    "url": "https://github.com/Surajshaw08/easy-dark-mode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Surajshaw08/easy-dark-mode.git"
+  },
+  "license": "MIT",
+  "author": "devsuraj08",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
